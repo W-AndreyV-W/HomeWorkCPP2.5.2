@@ -4,161 +4,151 @@
 
 class Triangle{
 public:
-    void get_name() {
-        std::cout << _name << std::endl;
+    std::string get_name() {
+        return _name;
     }
-    void get_side() {
-        std::cout << "Стороны: a=" << _side_a << " b=" << _side_b << " c=" << _side_c;
+    int get_side_a() {
+        return _side_a;
     }
-    void get_angle() {
-        std::cout << "Углы: A=" << _angle_a << " B=" << _angle_b << " C=" << _angle_c;
+    int get_side_b() {
+        return _side_b;
     }
-    void print_info() {
-        get_name();
-        get_side();
-        std::cout << std::endl;
-        get_angle();
-        std::cout << "\n" << std::endl;
+    int get_side_c() {
+        return _side_c;
     }
-    Triangle() :Triangle("Треугольник:", 10, 20, 30, 50, 60, 70) {}
+    int get_side_d() {
+        return _side_d;
+    }
+    int get_angle_a() {
+        return _angle_a;
+    }
+    int get_angle_b() {
+        return _angle_b;
+    }
+    int get_angle_c() {
+        return _angle_c;
+    }
+    int get_angle_d() {
+        return _angle_d;
+    }
+    int get_quanfig() {
+        return _quanfig;
+    }
+    Triangle() :Triangle("Треугольник:", 3, 10, 20, 30, 50, 60, 70) {}
 protected:
-    Triangle(std::string name_, int side_a_, int side_b_, int side_c_, int angle_a_, int angle_b_, int angle_c_) {
+    Triangle(std::string name_, int quanfig_, int side_a_, int side_b_, int side_c_, int angle_a_, int angle_b_, int angle_c_) {
         _side_a = side_a_;
         _side_b = side_b_;
         _side_c = side_c_;
         _angle_a = angle_a_;
         _angle_b = angle_b_;
         _angle_c = angle_c_;
+        _quanfig = quanfig_;
+        _name = name_;
+    }
+    Triangle(std::string name_, int quanfig_, int side_a_, int side_b_, int side_c_, int side_d_, int angle_a_, int angle_b_, int angle_c_, int angle_d_) {
+        _side_a = side_a_;
+        _side_b = side_b_;
+        _side_c = side_c_;
+        _side_d = side_d_;
+        _angle_a = angle_a_;
+        _angle_b = angle_b_;
+        _angle_c = angle_c_;
+        _angle_d = angle_d_;
+        _quanfig = quanfig_;
         _name = name_;
     }
 private:
     int _side_a = 0;
     int _side_b = 0;
     int _side_c = 0;
+    int _side_d = 0;
     int _angle_a = 0;
     int _angle_b = 0;
     int _angle_c = 0;
+    int _angle_d = 0;
+    int _quanfig = 0;
     std::string _name;
 };
 
 class TriangleRight :public Triangle {
 public:
-    void print_info() {
-        get_name();
-        get_side();
-        std::cout << std::endl;
-        get_angle();
-        std::cout << "\n" << std::endl;
-    }
-    TriangleRight() :TriangleRight("Прямоугольный треугольник:", 10, 20, 30, 30, 60){}
+    TriangleRight() :TriangleRight("Прямоугольный треугольник:", 3, 10, 20, 30, 30, 60){}
 private:
-    TriangleRight(std::string name_, int side_a_, int side_b_, int side_c_, int angle_a_, int angle_b_) :Triangle(name_, side_a_, side_b_, side_c_, angle_a_, angle_b_, 90) {
+    TriangleRight(std::string name_, int quanfig_, int side_a_, int side_b_, int side_c_, int angle_a_, int angle_b_) :Triangle(name_, quanfig_, side_a_, side_b_, side_c_, angle_a_, angle_b_, 90) {
     }
 };
 
 class TriangleIsos :public Triangle {
 public:
-    void print_info() {
-        get_name();
-        get_side();
-        std::cout <<  std::endl;
-        get_angle();
-        std::cout << "\n" << std::endl;
-    }
-    TriangleIsos() :TriangleIsos("Равнобедренный треугольник:", 10, 20, 50, 60) {}
+    TriangleIsos() :TriangleIsos("Равнобедренный треугольник:", 3, 10, 20, 50, 60) {}
 private:
-    TriangleIsos(std::string name_, int side_a_c_, int side_b_, int angle_a_c_, int angle_b_) :Triangle(name_, side_a_c_, side_b_, side_a_c_, angle_a_c_, angle_b_, angle_a_c_) {
+    TriangleIsos(std::string name_, int quanfig_, int side_a_c_, int side_b_, int angle_a_c_, int angle_b_) :Triangle(name_, quanfig_, side_a_c_, side_b_, side_a_c_, angle_a_c_, angle_b_, angle_a_c_) {
     }
 };
 
 class TriangleEquil :public Triangle {
 public:
-    void print_info() {
-        get_name();
-        get_side();
-        std::cout <<  std::endl;
-        get_angle();
-        std::cout << "\n" << std::endl;
-    }
-    TriangleEquil() :TriangleEquil("Равносторонний треугольник:", 30) {}
+    TriangleEquil() :TriangleEquil("Равносторонний треугольник:",3,  30) {}
 private:
-    TriangleEquil(std::string name_, int side_a_b_c_) :Triangle(name_, side_a_b_c_, side_a_b_c_, side_a_b_c_, 60, 60, 60) {
+    TriangleEquil(std::string name_, int quanfig_, int side_a_b_c_) :Triangle(name_, quanfig_, side_a_b_c_, side_a_b_c_, side_a_b_c_, 60, 60, 60) {
     }
 };
 
-class Quadrilateral :Triangle {
+class Quadrilateral :public Triangle {
 public:
-    void get_side_d() {
-        get_name();
-        get_side();
-        std::cout << " d=" << _side_d << std::endl;
-    }
-    void get_angle_d() {
-        get_angle();
-        std::cout << " D=" << _angle_d << "\n" << std::endl;
-    }
-    void print_info() {
-        get_side_d();
-        get_angle_d();
-    }
-    Quadrilateral() :Quadrilateral("Четырехугольник:",10, 20, 30, 40, 50, 60, 70 ,80) {}
+    Quadrilateral() :Quadrilateral("Четырехугольник:", 4, 10, 20, 30, 40, 50, 60, 70 ,80) {}
 protected:
-    Quadrilateral(std::string name_, int side_a_, int side_b_, int side_c_, int side_d_, int angle_a_, int angle_b_, int angle_c_, int angle_d_) :Triangle(name_, side_a_, side_b_, side_c_, angle_a_, angle_b_, angle_c_) {
-        _side_d = side_d_;
-        _angle_d = angle_d_;
+    Quadrilateral(std::string name_, int quanfig_, int side_a_, int side_b_, int side_c_, int side_d_, int angle_a_, int angle_b_, int angle_c_, int angle_d_) :Triangle(name_, quanfig_, side_a_, side_b_, side_c_, side_d_, angle_a_, angle_b_, angle_c_, angle_d_) {
     }
-private:
-    int _side_d = 0;
-    int _angle_d = 0;
 };
 
 class Parallelogram :public Quadrilateral {
 public:
-    void print_info() {
-        get_side_d();
-        get_angle_d();
-    }
-    Parallelogram() :Parallelogram("Параллелограмм:", 20, 30, 30, 40) {}
+    Parallelogram() :Parallelogram("Параллелограмм:", 4, 20, 30, 30, 40) {}
 protected:
-    Parallelogram(std::string name_, int side_a_c_, int side_b_d_, int angle_a_c_, int angle_b_d_) :Quadrilateral(name_, side_a_c_, side_b_d_, side_a_c_, side_b_d_, angle_a_c_, angle_b_d_, angle_a_c_, angle_b_d_) {
+    Parallelogram(std::string name_, int quanfig_, int side_a_c_, int side_b_d_, int angle_a_c_, int angle_b_d_) :Quadrilateral(name_, quanfig_, side_a_c_, side_b_d_, side_a_c_, side_b_d_, angle_a_c_, angle_b_d_, angle_a_c_, angle_b_d_) {
     }
 };
 
 class Rhombus :public Parallelogram {
 public:
-    void print_info() {
-        get_side_d();
-        get_angle_d();
-    }
-    Rhombus() :Rhombus("Ромб:", 30, 30, 40) {}
+    Rhombus() :Rhombus("Ромб:", 4, 30, 30, 40) {}
 private:
-    Rhombus(std::string name_, int side_a_b_c_d_, int angle_a_c_, int angle_b_d_) :Parallelogram(name_, side_a_b_c_d_, side_a_b_c_d_, angle_a_c_, angle_b_d_) {
+    Rhombus(std::string name_, int quanfig_, int side_a_b_c_d_, int angle_a_c_, int angle_b_d_) :Parallelogram(name_, quanfig_, side_a_b_c_d_, side_a_b_c_d_, angle_a_c_, angle_b_d_) {
     }
 };
 
 class Rectrangle :public  Parallelogram{
 public:
-    void print_info() {
-        get_side_d();
-        get_angle_d();
-    }
-    Rectrangle() :Rectrangle("Прямоугольник:", 10, 20) {}
+    Rectrangle() :Rectrangle("Прямоугольник:", 4, 10, 20) {}
 protected:
-    Rectrangle(std::string name_, int side_a_c_, int side_b_d_) :Parallelogram(name_, side_a_c_, side_b_d_, 90, 90) {
+    Rectrangle(std::string name_, int quanfig_, int side_a_c_, int side_b_d_) :Parallelogram(name_, quanfig_, side_a_c_, side_b_d_, 90, 90) {
     }
 };
 
 class Square :public Rectrangle{
 public:
-    void print_info() {
-        get_side_d();
-        get_angle_d();
-    }
-    Square() :Square("Квадрат:", 20) {}
+    Square() :Square("Квадрат:", 4, 20) {}
 private:
-    Square(std::string name_, int side_a_b_c_d_) :Rectrangle(name_, side_a_b_c_d_, side_a_b_c_d_) {
+    Square(std::string name_, int quanfig_, int side_a_b_c_d_) :Rectrangle(name_, quanfig_, side_a_b_c_d_, side_a_b_c_d_) {
     }
  };
+
+void print_info(Triangle* triangle) {
+    if (triangle->get_quanfig() < 4) {
+        std::cout << triangle->get_name() << std::endl;
+        std::cout << "Стороны: a=" << triangle->get_side_a() << " b=" << triangle->get_side_b() << " c=" << triangle->get_side_c() << std::endl;
+        std::cout << "Углы: A=" << triangle->get_angle_a() << " B=" << triangle->get_angle_b() << " C=" << triangle->get_angle_c() << std::endl;
+        std::cout << std::endl;
+    }
+    else {
+        std::cout << triangle->get_name() << std::endl;
+        std::cout << "Стороны: a=" << triangle->get_side_a() << " b=" << triangle->get_side_b() << " c=" << triangle->get_side_c() << " d=" << triangle->get_side_d() << std::endl;
+        std::cout << "Углы: A=" << triangle->get_angle_a() << " B=" << triangle->get_angle_b() << " C=" << triangle->get_angle_c() << " D=" << triangle->get_angle_d() << std::endl;
+        std::cout << std::endl;
+    }
+}
 
 int main()
 {
@@ -172,13 +162,22 @@ int main()
     Rhombus rhombus;
     Rectrangle rectrangle;
     Square square;
-    triangle.print_info();
-    triangleRight.print_info();
-    triangleIsos.print_info();
-    triangleEquil.print_info();
-    quadrilateral.print_info();
-    parallelogram.print_info();
-    rhombus.print_info();
-    rectrangle.print_info();
-    square.print_info();
+    Triangle* par_triangle = &triangle;
+    Triangle* par_triangleRight = &triangleRight;
+    Triangle* par_triangleIsos = &triangleIsos;
+    Triangle* par_triangleEquil = &triangleEquil;
+    Triangle* par_quadrilateral = &quadrilateral;
+    Triangle* par_parallelogram = &parallelogram;
+    Triangle* par_rhombus = &rhombus;
+    Triangle* par_rectrangle = &rectrangle;
+    Triangle* par_square = &square;
+    print_info(par_triangle);
+    print_info(par_triangleRight);
+    print_info(par_triangleIsos);
+    print_info(par_triangleEquil);
+    print_info(par_quadrilateral);
+    print_info(par_rectrangle);
+    print_info(par_square);
+    print_info(par_parallelogram);
+    print_info(par_rhombus);
 }
